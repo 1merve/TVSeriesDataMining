@@ -31,11 +31,17 @@ end
 ana_url = "https://tr.wikipedia.org/wiki/Kategori:Sona_erdi%C4%9Fi_y%C4%B1la_g%C3%B6re_T%C3%BCrk_televizyon_dizileri"
 alt_kategoriler = alt_kategorileri_cek(ana_url)
 
-global dizi_linkleri = []  # Global olarak tanımla
+tum_dizi_linkleri = []
 for kategori in alt_kategoriler
-    global dizi_linkleri = dizi_linklerini_cek(kategori)  # Global değişkene atama
+    local dizi_linkleri = dizi_linklerini_cek(kategori)
     append!(tum_dizi_linkleri, dizi_linkleri)
 end
 
 df = DataFrame(Dizi_Linkleri = tum_dizi_linkleri)
 CSV.write("diziLinkler.csv", df)
+
+# "/wiki/Kategori:" ile başlamayan satırları filtrele
+filtrelenmis_df = filter(row -> !startswith(row[1], "/wiki/Kategori:"), df)
+
+# Sonuçları yeni bir CSV dosyasına yaz
+CSV.write("filtrelenmisdiziLinkler.csv", filtrelenmis_df)
