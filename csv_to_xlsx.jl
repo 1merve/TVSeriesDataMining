@@ -3,8 +3,7 @@ using DataFrames
 using XLSX
 
 # CSV dosyasını oku ve DataFrame'e dönüştür
-df = CSV.read("final_dataset.csv", DataFrame)
+df = CSV.read("selected_data.csv", DataFrame)
 
 # DataFrame'i Excel dosyasına yaz
-XLSX.writetable("final_dataset.xlsx", collect(DataFrames.eachcol(df)), names(df))
-
+XLSX.writetable("selected_data.xlsx", collect(DataFrames.eachcol(df)), names(df))
