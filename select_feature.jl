@@ -5,7 +5,7 @@ using CSV
 final_df = CSV.read("final_dataset.csv", DataFrame)
 
 # İlgili sütunları seç
-selected_columns = ["Yapımşirketi", "Sezonsayısı", "Yayıntarihi", "Tür", "Kanal", "Başrol"]
+selected_columns = ["Yapımşirketi", "Yönetmen","Sezonsayısı", "Yayıntarihi", "Tür", "Kanal", "Başrol"]
 
 # Yeni DataFrame oluştur, 'Title' sütununu da ekle
 new_df = select(final_df, [:Title; [Symbol(col) for col in selected_columns]])
