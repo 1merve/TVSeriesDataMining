@@ -20,9 +20,6 @@ end
 file_path = "modified_file_new_1_corrected.csv"  # CSV dosyasının yolu
 df = CSV.read(file_path, DataFrame)
 
-# 'Bitiş_Yılı' sütununu sil
-#select!(df, Not(:Bitiş_Yılı))
-
 # Veri setini ön işle ve kodla
 df_encoded = preprocess_and_encode(df)
 
@@ -31,6 +28,4 @@ output_file_path = "encoded_dataset.csv"  # Çıktı dosyasının adını ve yol
 CSV.write(output_file_path, df_encoded)
 
 println("Encode edilmiş veriler '$output_file_path' dosyasına yazıldı.")
-
-
 
